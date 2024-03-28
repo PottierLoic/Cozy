@@ -1,0 +1,2 @@
+# Cozy
+Notion-like planner
