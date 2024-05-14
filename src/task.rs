@@ -1,4 +1,4 @@
-use chrono::{NaiveDate, Local};
+use chrono::{DateTime, Local};
 use std::fmt;
 
 #[derive(Debug)]
@@ -11,11 +11,11 @@ pub struct Task {
   pub id: u32,
   pub description: String,
   pub status: TaskStatus,
-  pub deadline: NaiveDate,
+  pub deadline: DateTime<Local>,
 }
 
 impl Task {
-  pub fn new(id: u32, description: String, deadline: NaiveDate) -> Self {
+  pub fn new(id: u32, description: String, deadline: DateTime<Local>) -> Self {
     Task {
       id,
       description,
@@ -29,7 +29,7 @@ impl Task {
   }
 
   pub fn is_overdue(&self) -> bool {
-    self.deadline < Local::now().naive_local().into()
+    self.deadline < Local::now()
   }
 }
 
